@@ -1,0 +1,13 @@
+/*
+Buttons
+
+A basic button module
+
+Markup: <a class="btn {{modifier_class}}">Button</a>
+
+.btn-round - Rounded button type
+
+Styleguide 1
+*/
+.btn {display:inline-block;padding:0 10px;height:30px;line-height:30px;text-align:center;color:#fff;background:#000;}
+.btn-round {border-radius:5px;}

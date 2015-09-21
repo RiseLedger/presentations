@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>CSS - Best Practices</title>
+
+		<meta name="description" content="CSS - Best Practices">
+		<meta name="author" content="Rise Ledger">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<style>
+			.bad {color:#cc0000;}
+			.good {color:#008000;}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>CSS</h1>
+					<h3>Best Practices</h3>
+					<p>
+						<small>Created by <a href="https://github.com/RiseLedger" target="_blank">Rise Ledger</a> / Frontend developer at <a href="https://yopeso.com" target="_blank">Yopeso</a></small>
+					</p>
+				</section>
+
+				<section data-background="sample/good.gif"></section>
+
+				<section>
+					<h2>Key Terms</h2>
+					<ul>
+						<li>Fundamentals</li>
+						<li>Simplicity</li>
+						<li>Documentation</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Fundamentals</h1>
+				</section>
+
+				<section>
+					<h2>Things you should really understand</h2>
+					<ol>
+						<li>Position (Absolute, Relative, Fixed, Static)</li>
+						<li>Floats</li>
+						<li>Z-index</li>
+					</ol>
+					<p class="fragment">...but we will talk about selectors</p>
+				</section>
+
+				<section>
+					<h2>Writing efficient CSS selectors</h2>
+					<p class="fragment">- Minimize the use of ids</p>
+					<p class="fragment">- Avoid the descendant selector</p>
+					<p class="fragment">- Avoid complex selector</p>
+					<p class="fragment">- Exclude tags from selector</p>
+				</section>
+
+				<section>
+					<p>Minimize the use of ids</p>
+					<p class="bad">Bad</p>
+					<pre><code data-trim>
+#header {
+	background: #d6d6d6;
+	color: #000;
+	padding: 15px;
+}
+					</code></pre>
+					<p class="good">Good</p>
+					<pre><code data-trim>
+.l-design {
+	background: #d6d6d6;
+	color: #000;
+	padding: 15px;
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<p>Avoid the descendant selector</p>
+					<p class="bad">Bad</p>
+					<pre><code data-trim>
+.tree .branches .leaves {…}
+					</code></pre>
+
+					<p class="bad">Better, but still bad</p>
+					<pre><code data-trim>
+.tree > .branches > .leaves {…}
+					</code></pre>
+
+					<p class="good">Good</p>
+					<pre><code data-trim>
+.leaves {…}
+					</code></pre>
+				</section>
+
+				<section>
+					<p>Avoid complex selector</p>
+					<p class="bad">Bad</p>
+					<pre><code data-trim>
+[class^="btn"][class*="-large"] {...}
+[class^="btn"][class*="-round"] {...}
+[class^="btn"][class*="-flat"] {...}
+					</code></pre>
+					<pre><code data-trim>
+<button class="btn-flat-large-round">Fancy Button</button>
+					</code></pre>
+
+					<p class="good">Good</p>
+					<pre><code data-trim>
+.btn-large {...}
+.btn-round {...}
+.btn-flat {...}
+					</code></pre>
+
+					<pre><code data-trim>
+<button class="btn-flat btn-large btn-round">Fancy Button</button>
+					</code></pre>
+				</section>
+
+				<section>
+					<p>Exclude tags from selector</p>
+					<p class="bad">Bad</p>
+					<pre><code data-trim>
+a.btn {...}
+					</code></pre>
+					<p class="good">Good</p>
+					<pre><code data-trim>
+.btn {...}
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Simplicity</h1>
+				</section>
+
+                <section>
+                    <h2>Things that we can do</h2>
+                    <p>- Eliminate CSS3 Vendor Prefixes</p>
+                    <p>- Follow KISS and DRY principles</span></p>
+                    <p>- Create Scalable and Modular Architecture</p>
+                </section>
+
+                <section>
+                    <section>
+                        <p>Eliminate CSS3 Vendor Prefixes</p>
+                        <p class="bad">Bad</p>
+                        <pre><code data-trim>
+.centrify {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+}
+                    </code></pre>
+                    <p class="good">Good</p>
+                    <pre><code data-trim>
+.centrify {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <p>
+                            <span>How to achieve this?</span>
+                            <span class="fragment">JS task runners to the rescue</span>
+                            <ul>
+                                <li class="fragment">Grunt</li>
+                                <li class="fragment">Gulp</li>
+                                <li class="fragment">Broccoli</li>
+                            </ul>
+                            <p class="fragment">We will take a look how to implement this in Gulp</p>
+                        </p>
+                    </section>
+                    <section>
+                        <p>1. Install gulp autoprefixer</p>
+                        <pre><code data-trim>
+npm install --save-dev gulp-autoprefixer
+                        </code></pre>
+                        <p>2. Usage</p>
+                        <pre><code data-trim>
+var gulp = require('gulp');
+var autoprefixer = require('gulp-autoprefixer');
+
+gulp.task('default', function () {
+    return gulp.src('src/app.css')
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions']
+        }))
+        .pipe(gulp.dest('dist'));
+});
+                        </code></pre>
+                        <p>3. Run the default task</p>
+                        <pre><code data-trim>
+gulp
+                        </code></pre>
+                    </section>
+                </section>
+
+				<section>
+                    <section>
+    					<h2>Follow KISS and DRY principles</h2>
+
+                        <p>1. Integrate a preprocessors like:</p>
+                        <ul>
+                            <li>Sass</li>
+                            <li>Less</li>
+                            <li>Stylus</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <p>Give a lot of benefits like:</p>
+                        <ul>
+                            <li>Variables</li>
+                            <li>Mixins</li>
+                            <li>Expressions</li>
+                        </ul>
+                    </section>
+				</section>
+
+                <section>
+                    <h2>Create Scalable and Modular Architecture</h2>
+                    <ul>
+                        <li>BEM</li>
+                        <li>SMACSS</li>
+                        <li>OOCSS</li>
+                        <li>Atomic Design</li>
+                        <li>Multilayer CSS</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h1>Documentation</h1>
+                </section>
+
+                <section>
+                    <h2>KSS (Knyle Style Sheets)</h2>
+                    <blockquote>
+                        Documentation for any flavor of CSS that you’ll love to write. Human readable, machine parsable, and easy to remember.
+                    </blockquote>
+
+                    <small>Works great with CSS, SCSS, LESS, and much more.</small>
+                </section>
+
+                <section>
+                    <p>1. Document your css</p>
+                    <pre><code data-trim>
+/* Buttons
+
+A basic button module
+
+Markup: <a class="btn {{modifier_class}}">Button</a>
+
+.btn-round - Rounded button type
+
+Styleguide 1 */
+                    </code></pre>
+                    <p>2. Install kss node package</p>
+                    <pre><code data-trim>
+npm install kss --save-dev
+                    </code></pre>
+                    <p>3. Generate Documentation</p>
+                    <pre><code data-trim>
+node_modules/kss/bin/kss-node --source sample/css/ --css style.css
+                    </code></pre>
+                </section>
+
+				<section>
+					<h1>Thank you</h1>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
