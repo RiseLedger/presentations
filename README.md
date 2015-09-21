@@ -1,3 +1,3 @@
 # Presentations
 
-- [CSS Best Practices](http://riseledger.github.io/presentations/css-best-practices/#/)
+- [CSS Best Practices](https://riseledger.github.io/presentations/css-best-practices/#/)
