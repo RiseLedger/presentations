@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Get your css to the next level</title>
+
+		<meta name="description" content="CSS - Best Practices">
+		<meta name="author" content="Rise Ledger">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Get your css to the next level</h1>
+					<p>
+						<small>Created by <a href="https://github.com/RiseLedger" target="_blank">Rise Ledger</a> / Frontend developer at <a href="https://yopeso.com" target="_blank">Yopeso</a></small>
+					</p>
+				</section>
+
+				<section data-background="sample/good.gif"></section>
+
+				<section>
+					<h1>CSS Methodologies</h1>
+                    <ul>
+                        <li>OOCSS (Object-Oriented CSS)</li>
+                        <li>BEM (Block, Element, Modifier)</li>
+                        <li>SMACSS (Scalable and Modular Architecture for CSS)</li>
+                    </ul>
+				</section>
+
+				<section>
+					<h1>SMACSS</h1>
+				</section>
+
+				<section>
+					<h2>Categorization</h2>
+                    <ol>
+    					<li class="fragment">Base</li>
+                        <li class="fragment">Layout</li>
+                        <li class="fragment">Module</li>
+                        <li class="fragment">State</li>
+                        <li class="fragment">Theme</li>
+                    </ol>
+				</section>
+
+				<section>
+                    <h1>Base</h1>
+                    <p>Used to style the html tags</p>
+				</section>
+
+                <section>
+                    <h3>Example of Base File</h3>
+                    <pre><code data-trim>
+html, body {...}
+h1, h2, h3, h4, h5, h6 {...}
+table {...}
+th, td {...}
+textarea, select, input {...}
+p {...}
+                    </code></pre>
+                </section>
+
+				<section>
+                    <h1>Layout</h1>
+                    <p>Contains style for structure</p>
+				</section>
+
+				<section>
+                    <h3>Layout can include the following</h3>
+                    <ol>
+                        <li>Grid System</li>
+                        <li>Style of constrain box that include modules. (ex: header, footer)</li>
+                    </ol>
+				</section>
+
+                <section>
+                    <h3>Naming convention for Layout classes</h3>
+                    <pre><code data-trim>
+.l-section {...}
+.layout-section {...}
+                    </code></pre>
+                </section>
+
+				<section>
+                    <h1>Module</h1>
+                    <p>A component that can be reused on other page</p>
+                </section>
+
+                <section data-background="sample/github.png"></section>
+
+				<section>
+                    <h3>Example of Modules:</h3>
+                    <ul>
+                        <li>Buttons</li>
+                        <li>Tabs</li>
+                        <li>Accordion</li>
+                        <li>Dropdown</li>
+                        <li>Slider</li>
+                        <li>Testimonials</li>
+                        <li>Modal</li>
+                        <li>Others</li>
+                    </ul>
+                </section>
+
+				<section>
+                    <section>
+    					<h3>Naming convention for Module</h3>
+                        <p>Button Module</p>
+                        <pre><code data-trim>
+<a href="#" class="btn btn-large">My button</a>
+                        </code></pre>
+                        <pre><code data-trim>
+.btn {...}
+.btn-large {...}
+.btn-small {...}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <p>Modal Module</p>
+                        <pre><code data-trim>
+<div class="modal">
+    <div class="modal-header">My Header Content</div>
+    <div class="modal-body">My Content</div>
+    <div class="modal-footer">My Footer Content</div>
+</div>
+                        </code></pre>
+                        <pre><code data-trim>
+.modal {...}
+.modal-header {...}
+.modal-body {...}
+.modal-footer {...}
+                        </code></pre>
+                    </section>
+				</section>
+
+                <section>
+                    <h1>State</h1>
+                    <p>Represent the current state of module</p>
+                </section>
+
+                <section>
+                    <h3>Naming convention for State</h3>
+                    <pre><code data-trim>
+/* Global State */
+.is-active {}
+.is-disabled {}
+.is-hidden {}
+
+/* Module State */
+.btn-is-disabled {}
+.btn-is-enabled {}
+
+/* Module State via data attribute */
+.btn[data-state="disabled"] {}
+                    </code></pre>
+                </section>
+
+				<section>
+                    <h3>Manipulate States</h3>
+                    <pre><code data-trim>
+// For class state
+$('.item').removeClass('is-hidden').addClass('is-active');
+
+// For data attribute state
+$('.item').data('active');
+                    </code></pre>
+				</section>
+
+                <section>
+                    <h1>Theme</h1>
+                    <p>Use for customization the site look</p>
+                </section>
+
+                <section>
+                    <h3>Example of use for Theme:</h3>
+                    <ul>
+                        <li>Colors</li>
+                        <li>User Preference</li>
+                    </ul>
+                </section>
+
+				<section style="text-align:left">
+					<h1>Thank you</h1>
+                    <a href="https://github.com/RiseLedger/presentations/">Get your css to the next level</a>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
