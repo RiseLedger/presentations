@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Warrior Path of JavaScript Developer</title>
+
+		<meta name="description" content="Warrior Path of JavaScript Developer">
+		<meta name="author" content="Radu Turcan">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<style>
+			.bad {color:#cc0000;}
+			.good {color:#008000;}
+
+            .bg-contain {
+                background-size: contain !important;
+            }
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>Warrior Path of JavaScript Developer</h2>
+					<p>
+						<small>Created by <a href="https://github.com/RiseLedger" target="_blank">Radu Turcan</a> / Frontend developer at <a href="https://yopeso.com" target="_blank">Yopeso</a></small>
+					</p>
+				</section>
+
+				<section data-background="sample/good.gif"></section>
+
+				<section>
+					<h2>History Of JavaScript</h2>
+					<ul>
+						<li>Created by Brendan Eich in May 1995</li>
+						<li>Was written in 10 Days</li>
+						<li>First name of language was Mocha</li>
+            <li>Implement spec/API of EcmaScript</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Strange Things in JS</h2>
+          <pre><code data-trim>
+{} + [] // 0
+{} - [] // -0
+[] + {} // "[object Object]"
+['10', '10', '10'].map(parseInt) // [10, NaN, 2]
+          </code></pre>
+				</section>
+
+        <section data-background="sample/frameworks.png" class="bg-contain">
+            <h2  class="fragment">How it feels to learn JavaScript in 2016?</h2>
+        </section>
+
+        <section>
+            <h2>Overwhelming to start</h2>
+            <ul>
+                <li class="fragment">Lots of Frameworks</li>
+                <li class="fragment">Lots of Tools</li>
+                <li class="fragment">Lots of Libraries</li>
+            </ul>
+        </section>
+
+        <section>
+          <h2>Javascript Fatigue</h2>
+          <p>
+            Saul: “How’s it going?”<br />
+            Eric: “Fatigued.”<br />
+            Saul: “Family?”<br />
+            Eric: “No, Javascript.”<br />
+          </p>
+          <small>by Eric Clemmons</small>
+        </section>
+
+        <section>
+          <h1>Why JavaScript?</h1>
+        </section>
+
+		<section>
+			<h2>JavaScript Today</h2>
+            <p><img src="sample/github_language_popularity.png"</p>
+			<small>Most popular programming language on Github</small>
+		</section>
+
+        <section>
+          <h2>Used Everywhere</h2>
+          <ul>
+            <li class="fragment">Frontend Applications (with JavaScript)</li>
+            <li class="fragment">Backend Applications (with NodeJS)</li>
+            <li class="fragment">C, C++ projects in browser (with Emscripten, WebAssembly)</li>
+            <li class="fragment">Desktop Applications (with Electron)</li>
+            <li class="fragment">Mobile Applications for Android, iOS (with React Native)</li>
+            <li class="fragment">IoT (with Tessel)</li>
+          </ul>
+        </section>
+
+        <section>
+            <h2>Where to start?</h2>
+            <ul>
+                <li class="fragment">Learn language syntax, basic functionality</li>
+                <li class="fragment">Learn how language is working</li>
+                <li class="fragment">Learn tools, frameworks</li>
+                <li class="fragment">Be informed</li>
+            </ul>
+
+            <p class="fragment">Practice, practice, practice</p>
+        </section>
+
+        <section>
+            <h2>Learn language syntax</h2>
+        </section>
+
+        <section>
+            <h2>Declare variables</h2>
+            <pre><code data-trim>
+var color = 'black';
+var isActive = false;
+var numberValue = 10;
+var arr = [2, 3, 4];
+var car = {
+    model: 'BMW i8',
+    color: ['grey', 'blue', 'white', 'black'],
+    year: 2016,
+    wheels: 4,
+    outOfStock: true,
+};
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Declare functions</h2>
+            <pre><code data-trim>
+function add(a, b) {
+    return a + b;
+}
+
+var add = function (a, b) {
+    return a + b;
+}
+
+// call
+add(2, 3); // 5
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Declare functions</h2>
+            <pre><code data-trim>
+function add(a) {
+    return function (b) {
+        return a + b;
+    }
+}
+
+// call them
+var addTwo = add(2);
+addTwo(5); // 7
+add(3)(7); // 10
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Conditions</h2>
+            <pre><code data-trim>
+var isActive = false;
+
+if (isActive) {
+    console.log('yes, it`s active');
+}
+else {
+    console.log('no, it`s disabled');
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Conditions</h2>
+
+            <pre style="font-size:16px"><code data-trim>
+function mySwitchCase() {
+    var dayOfWeek = 'Thursday';
+
+    switch(dayOfWeek) {
+        case 'Monday':
+            console.log(`Today is ${dayOfWeek}`);
+            break;
+        case 'Tuesday':
+        case 'Wednesday':
+            return goToShop();
+        case 'Thursday':
+            console.log('Great');
+            // execute other code
+            break;
+        case 'Friday':
+            return prepareForWeekend();
+        default:
+            console.log('We have a weekend day');
+    }
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Loops</h2>
+            <ul>
+                <li>for</li>
+                <li>for/in</li>
+                <li>for/of</li>
+                <li>while</li>
+                <li>do/while</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Loops example</h2>
+            <pre><code data-trim>
+var colors = ['black', 'white', 'green'];
+for (var i = 0; i < colors.length; i++) {
+    console.log(colors[i]);
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Learn how language is working</h2>
+        </section>
+
+        <section>
+            <ul>
+                <li>Scope</li>
+                <li>Hoisting</li>
+                <li>How code is executed</li>
+                <li>Understanding why</li>
+            </ul>
+
+            <p class="fragment"><a href="https://github.com/getify/You-Dont-Know-JS">You Don't Know JS Books</a></p>
+        </section>
+
+        <section>
+            <h2>Learn tools, frameworks</h2>
+        </section>
+
+        <section>
+            <h2>Getting started with Gulp</h2>
+            <pre style="font-size: 16px"><code data-trim>
+// 1. Install gulp globally:
+npm install --global gulp-cli
+
+// 2. Initialize your project directory:
+npm init -y
+
+// 3. Install gulp in your project devDependencies:
+npm install --save-dev gulp
+
+// 4. Create a gulpfile.js at the root of your project:
+var gulp = require('gulp');
+
+gulp.task('default', function() {
+  // place code for your default task here
+});
+
+// 5. Run gulp:
+gulp
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Be informed</h2>
+        </section>
+
+        <section>
+            <h2>Source of information</h2>
+            <ul>
+                <li class="fragment">Weekly Email Newsletter (ex: JavaScript Weekly)</li>
+                <li class="fragment">News Reader (ex: Panda)</li>
+                <li class="fragment">Technology Trends (by ThoughtWorks)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Practice</h2>
+        </section>
+
+        <section>
+            <h2>Conway's Game of Life</h2>
+            <img src="sample/game_of_life.gif" alt="">
+            <small style="display: block">
+                <a href="https://en.wikipedia.org/wiki/Conway's_Game_of_Life" target="_blank">About Game</a>
+            </small>
+        </section>
+
+        <section>
+            <h2>Rules</h2>
+            <small class="fragment">1. Any live cell with fewer than two live neighbours dies, as if caused by under-population.</small>
+            <small class="fragment">2. Any live cell with two or three live neighbours lives on to the next generation.</small>
+            <small class="fragment">3. Any live cell with more than three live neighbours dies, as if by over-population.</small>
+            <small class="fragment">4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</small>
+        </section>
+
+        <section>
+            <p>Any live cell with fewer than 2 neighbours dies</p>
+            <img src="sample/rule_1.png" alt="">
+        </section>
+
+        <section>
+            <p>Any live cell with 2 or 3 neighbours lives on</p>
+            <img src="sample/rule_2.png" alt="">
+        </section>
+
+        <section>
+            <p>Any live cell with more than 3 neighbours dies</p>
+            <img src="sample/rule_3_4.gif" alt="">
+        </section>
+
+        <section>
+            <p>Any dead cell with exactly 3 neighbours becomes a live cell</p>
+            <img src="sample/rule_3_4.gif" alt="">
+        </section>
+
+        <section>
+            <h2>Declare Variables</h2>
+            <pre><code data-trim>
+var c = document.getElementById('game');
+var ctx = c.getContext("2d");
+var scaleCell = 5;
+var grid = [];
+var fps = 5;
+
+var sceneWidth = window.innerWidth;
+var sceneHeight = window.innerHeight;
+
+var rows = parseInt(sceneWidth / scaleCell);
+var cols = parseInt(sceneHeight / scaleCell);
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Generate Grid</h2>
+            <pre><code data-trim>
+for (var x = 0; x < rows; x++) {
+  grid[x] = [];
+  for (var y = 0; y < cols; y++) {
+    grid[x][y] = 0;
+  }
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Generate Random Number</h2>
+            <pre><code data-trim>
+Math.floor(Math.random() * max) + min;
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Add cells to the grid</h2>
+            <pre><code data-trim>
+function seedGrid(cellsCount) {
+  for (var i = 0; i < cellsCount; i++) {
+    grid[getRandomNumber(0, rows)][getRandomNumber(0, cols)] = 1;
+  }
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Draw a cell</h2>
+            <pre><code data-trim>
+ctx.fillStyle = color || 'black';
+ctx.fillRect(x * scaleCell, y * scaleCell, scaleCell, scaleCell);
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Draw grid</h2>
+            <pre><code data-trim>
+for (var i = 0; i < grid.length; i++) {
+  for (var j = 0; j < grid.length; j++) {
+    if (grid[i][j]) {
+      drawCell(i, j);
+    }
+  }
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Get Cell Neighbours</h2>
+            <pre><code data-trim>
+function isAliveCell(x, y) {
+  return grid[x][y];
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Implement Animation</h2>
+            <pre><code data-trim>
+requestAnimationFrame(render);
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Glue all together</h2>
+            <pre><code data-trim>
+function init() {
+  setGameSize();
+  generateGrid();
+  seedGrid(7000);
+  drawGrid();
+  render();
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Draw on next tick</h2>
+            <pre><code data-trim>
+function draw() {
+  clearCanvas();
+  getNextGridState();
+  drawGrid();
+}
+            </code></pre>
+        </section>
+
+        <section data-background="sample/game_of_life_result.gif"></section>
+
+		<section style="text-align:left">
+			<h1>Thank you</h1>
+            <a href="https://github.com/RiseLedger/presentations/">Warrior Path of JavaScript Developer</a>
+		</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
